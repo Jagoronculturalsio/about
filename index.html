@@ -13,11 +13,12 @@
             font-family: 'Inter', sans-serif;
             background-color: #f7f7f7;
         }
+        
+        /* স্টাইল পরিবর্তন: Uodate file.html থেকে নেওয়া CSS */
         .nav-button:hover {
             color: #4f46e5;
-            background-color: #eef2ff;
+            background-color: rgba(255, 255, 255, 0.6); 
         }
-        /* Highlight style for active navigation links */
         .nav-active {
             background-color: #4f46e5; /* indigo-600 */
             color: #ffffff;
@@ -27,6 +28,8 @@
             background-color: #4338ca; /* indigo-700 */
             color: #ffffff;
         }
+        /* End of style changes */
+
         .about-card {
             background-color: white;
             border-radius: 1rem;
@@ -36,47 +39,55 @@
     </style>
 </head>
 <body class="min-h-screen">
-    <div id="app" class="container mx-auto p-4 md:p-8">
-
-        <!-- Navigation Bar (Identical to Home Page, but 'About' is active) -->
-        <header class="flex flex-col md:flex-row justify-between items-center bg-white p-4 md:p-6 rounded-xl shadow-lg mb-12 sticky top-0 z-50">
+    
+    <!-- পরিবর্তন ১: Fixed Overlay Navigation Bar Structure (Uodate file.html থেকে নেওয়া) -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-white/30 backdrop-blur-sm p-4 md:p-6 transition duration-300 shadow-lg">
+        <!-- Main Container: flex justify-between ensures Home is left and other links are right on ALL screens -->
+        <div class="container mx-auto flex justify-between items-center">
             
-            <!-- Left Group: JAGORON and Home -->
-            <div class="flex flex-col md:flex-row items-center mb-4 md:mb-0">
-                <!-- JAGORON Text -->
-                <div class="text-3xl font-extrabold text-indigo-600 tracking-wider mb-2 md:mb-0 md:mr-6">
-                    <!-- Updated: Link to Home page URL -->
+            <!-- START OF LEFT GROUP: JAGORON and Home -->
+            <div class="flex items-center space-x-4">
+                <!-- JAGORON Text (Hidden on small screens, visible on medium screens and up) -->
+                <div class="hidden md:block text-3xl font-extrabold text-indigo-600 tracking-wider">
                     <a href="https://jagoronculturalsio.github.io/home/">JAGORON</a>
                 </div>
-                <!-- Home Button (Standard) -->
+                
+                <!-- Home Button (Standard, smaller on mobile) -->
                 <a href="https://jagoronculturalsio.github.io/home/" id="homeButton" 
-                   class="nav-button px-4 py-2 rounded-lg text-gray-700 hover:bg-gray-100 transition duration-300">
+                   class="nav-button px-2 py-1 text-sm md:px-4 md:py-2 md:text-base rounded-lg text-gray-700 hover:bg-gray-100 transition duration-300">
                     Home
                 </a>
             </div>
+            <!-- END OF LEFT GROUP -->
             
             <!-- Right Group: Nav Links (About, Contact, Location, Ticket) -->
-            <nav class="flex flex-wrap justify-center space-x-2 md:space-x-4 font-semibold">
+            <!-- justify-end ensures buttons stick to the right on small screens. Use smaller sizes on mobile (px-1 py-0.5) -->
+            <nav class="flex flex-wrap justify-end space-x-2 md:space-x-4 font-semibold">
                 <!-- About Button (Highlighted/Active) -->
-                <!-- Updated: Link to About page URL -->
-                <a href="https://jagoronculturalsio.github.io/about/" class="nav-button nav-active px-4 py-2 rounded-lg transition duration-300">About</a>
-                <!-- Links below point to conceptual file names -->
-                <!-- Updated: Link to Contact page URL -->
-                <a href="https://jagoronculturalsio.github.io/contact/" class="nav-button p-2 rounded-lg text-gray-700 hover:bg-gray-100 transition duration-300">Contact</a>
-                <!-- Updated: Link to Address page URL - Changed 'Address' to 'Location' -->
-                <a href="https://jagoronculturalsio.github.io/address/" class="nav-button p-2 rounded-lg text-gray-700 hover:bg-gray-100 transition duration-300">Location</a>
-                <!-- TickeT button - Standard style, link is handled by JS -->
+                <a href="https://jagoronculturalsio.github.io/about/" class="nav-button nav-active px-1 py-0.5 text-sm md:px-4 md:py-2 md:text-base rounded-lg transition duration-300">About</a>
+                
+                <!-- Contact Link -->
+                <a href="https://jagoronculturalsio.github.io/contact/" class="nav-button px-1 py-0.5 text-sm md:p-2 md:text-base rounded-lg text-gray-700 hover:bg-gray-100 transition duration-300">Contact</a>
+                
+                <!-- Location Link (নেভিগেশন বারের সবথেকে আপডেট ভার্সন - Location শব্দটি ব্যবহার করা হয়েছে) -->
+                <a href="https://jagoronculturalsio.github.io/address/" class="nav-button px-1 py-0.5 text-sm md:p-2 md:text-base rounded-lg text-gray-700 hover:bg-gray-100 transition duration-300">Location</a>
+                
+                <!-- TickeT button (Smaller on mobile) -->
                 <button id="navTicketButton" 
-                    class="nav-button text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-100 transition duration-300 shadow-sm border border-gray-200"
+                    class="nav-button text-gray-700 px-1 py-0.5 text-sm md:px-4 md:py-2 md:text-base rounded-lg hover:bg-gray-100 transition duration-300 shadow-sm border border-gray-200"
                     onclick="handleTicketClick()">
                     Ticket
                 </button>
             </nav>
-        </header>
+        </div>
+    </header>
+
+    <!-- পরিবর্তন ২: Main Content-এ প্যাডিং অ্যাডজাস্টমেন্ট (Navigation Bar fixed হওয়ার জন্য) -->
+    <div id="app" class="container mx-auto p-4 md:p-8 pt-[70px] md:pt-[92px]">
 
         <main class="space-y-12">
 
-            <!-- About Page Content -->
+            <!-- About Page Content (কোন পরিবর্তন হয়নি) -->
             <section id="about" class="about-card">
                 <h1 class="text-4xl md:text-5xl font-extrabold text-indigo-700 mb-6 border-b pb-3">
                     About JAGORON - The Annual Cultural Awakening
@@ -105,7 +116,7 @@
                 </div>
             </section>
 
-            <!-- Secondary CTA -->
+            <!-- Secondary CTA (কোন পরিবর্তন হয়নি) -->
             <section class="text-center py-8">
                 <h2 class="text-3xl font-bold text-gray-800 mb-4">Want to Know Our Story?</h2>
                 <p class="text-gray-500 mb-6">Read our detailed history and meet the organizing committee.</p>
